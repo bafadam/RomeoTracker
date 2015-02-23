@@ -1,0 +1,28 @@
+﻿@model DateTime?
+
+@{
+
+}
+
+<input type="hidden"
+       id="@Html.IdForModel()"
+       name="@Html.NameForModel()"
+       value="" 
+       data-dojo-type="dijit/form/TextBox"/>
+
+
+<input type="text"
+       name="@(ViewData.TemplateInfo.GetFullHtmlFieldId(""))_datepart"
+       id="@(ViewData.TemplateInfo.GetFullHtmlFieldId(""))_datepart"
+       value="@((Model.HasValue) ? Model.Value.ToString("yyyy-MM-dd") : "")"
+       data-dojo-type="dijit/form/DateTextBox"
+       required="true"
+       onchange="UpdateDateTime('@Html.IdForModel()');" />
+
+<input type="text"
+       name="@(ViewData.TemplateInfo.GetFullHtmlFieldId(""))_timepart"
+       id="@(ViewData.TemplateInfo.GetFullHtmlFieldId(""))_timepart"
+       value="@((Model.HasValue) ? Model.Value.ToString("HH:mm:ss K") : "")"
+       data-dojo-type="dijit/form/TimeTextBox"
+       required="true"
+       onchange="UpdateDateTime('@Html.IdForModel()');" />

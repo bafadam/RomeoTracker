@@ -1,0 +1,13 @@
+﻿@model DateTime?
+
+
+@{
+    Layout = null;
+}
+
+<input type="text" 
+       name="@(Html.NameForModel())"
+       id="@(Html.IdForModel())" 
+       value="@((Model.HasValue) ? Model.Value.ToString("yyyy-MM-dd") : "")" 
+       data-dojo-type="dijit/form/DateTextBox" 
+       required="true" />
