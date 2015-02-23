@@ -31,6 +31,12 @@ namespace RomeoTracker.Models
         
         }
 
+        #region Events 
+
+
+        #endregion
+
+
         #region EntityModel
 
         public DbSet<Pet> Pets { get; set; }
