@@ -7,7 +7,7 @@
 <input type="hidden"
        id="@Html.IdForModel()"
        name="@Html.NameForModel()"
-       value="" 
+       value="@((Model.HasValue) ? Model.Value.ToString() : "")" 
        />
 
 
@@ -22,7 +22,7 @@
 <input type="text"
        name="@(ViewData.TemplateInfo.GetFullHtmlFieldId(""))_timepart"
        id="@(ViewData.TemplateInfo.GetFullHtmlFieldId(""))_timepart"
-       value="@((Model.HasValue) ? Model.Value.ToString("HH:mm:ss K") : "")"
+       value="@((Model.HasValue) ? Model.Value.ToString("'T'HH:mm:ss") : "")"
        data-dojo-type="dijit/form/TimeTextBox"
        required="true"
        onchange="UpdateDateTime('@Html.IdForModel()');" />
