@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace RomeoTracker.Models.Entities
 {
@@ -14,7 +15,11 @@ namespace RomeoTracker.Models.Entities
     {
         [Key]
         public int Id { get; set; }
+
+        [DisplayName("Name")]
         public string Name { get; set; }
+
+        [DisplayName("Description")]
         public string Description { get; set; }
 
 

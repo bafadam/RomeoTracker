@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 
 namespace RomeoTracker.Models.Entities
@@ -13,8 +14,10 @@ namespace RomeoTracker.Models.Entities
     public abstract class IEntity
     {
         [UIHint("DateTime")]
+        [DisplayName("Create Date")]
         public DateTime CreateDate { get; set; }
         [UIHint("DateTime")]
+        [DisplayName("Modify Date")]
         public DateTime ModifyDate { get; set; }
 
         public SystemUser CreateUser { get; set; }

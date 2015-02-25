@@ -32,12 +32,30 @@ namespace RomeoTracker.Services
 
         public void Create(Pet pet)
         {
+            pet.OnBeforeInsert();
             context.Pets.Add(pet);
-
-
+            context.SaveChanges();
         }
 
+        public void Update(Pet pet)
+        {
+            pet.OnBeforeUpdate();
+            context.SaveChanges();
+        }
 
+        public void Delete(Pet pet)
+        {
+            pet.OnBeforeDelete();
+            context.Pets.Remove(pet);
+        }
+
+        /// <summary>
+        /// A public impelementation that follows the security model to retrieve an IEnumerable list of pets.
+        /// </summary>
+        public IEnumerable<Pet> Retrieve()
+        {
+            return context.Pets;
+        }
 
         #endregion
 
