@@ -1,0 +1,10 @@
+﻿@model RomeoTracker.Models.Entities.PetImage
+
+@{
+    Layout = null;
+}
+
+@if (Model != null && Model.Picture != null)
+{
+    <img src="data:@(Model.ImageMimeType);base64,@(Convert.ToBase64String(Model.Picture))" alt="@Model.Name" />
+}

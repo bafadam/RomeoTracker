@@ -10,4 +10,4 @@
        id="@(Html.IdForModel())" 
        value="@((Model.HasValue) ? Model.Value.ToString("yyyy-MM-dd") : "")" 
        data-dojo-type="dijit/form/DateTextBox" 
-       required="true" />
+       required="@(ViewData.ModelMetadata.IsRequired)" />

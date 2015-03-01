@@ -16,7 +16,7 @@
        id="@(ViewData.TemplateInfo.GetFullHtmlFieldId(""))_datepart"
        value="@((Model.HasValue) ? Model.Value.ToString("yyyy-MM-dd") : "")"
        data-dojo-type="dijit/form/DateTextBox"
-       required="true"
+       required="@ViewData.ModelMetadata.IsRequired"
        onchange="UpdateDateTime('@Html.IdForModel()');" />
 
 <input type="text"
@@ -24,5 +24,5 @@
        id="@(ViewData.TemplateInfo.GetFullHtmlFieldId(""))_timepart"
        value="@((Model.HasValue) ? Model.Value.ToString("'T'HH:mm:ss") : "")"
        data-dojo-type="dijit/form/TimeTextBox"
-       required="true"
+       required="@ViewData.ModelMetadata.IsRequired"
        onchange="UpdateDateTime('@Html.IdForModel()');" />
