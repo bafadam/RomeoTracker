@@ -30,6 +30,18 @@ namespace RomeoTracker.Models.Entities
         {
         }
 
+        public void AddPetImage(HttpPostedFileBase image)
+        {
+            if (this.PetPicture == null)
+                this.PetPicture = new PetImage();
+
+            this.PetPicture.ImageMimeType = image.ContentType;
+            this.PetPicture.ContentLength = image.ContentLength;
+            this.PetPicture.Picture = new byte[image.ContentLength];
+            image.InputStream.Read(this.PetPicture.Picture, 0, image.ContentLength);
+
+        }
+
 
 
     }
