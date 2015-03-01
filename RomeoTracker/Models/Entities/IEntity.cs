@@ -15,10 +15,10 @@ namespace RomeoTracker.Models.Entities
     {
         [UIHint("DateTime")]
         [DisplayName("Create Date")]
-        public DateTime CreateDate { get; set; }
+        public DateTime? CreateDate { get; set; }
         [UIHint("DateTime")]
         [DisplayName("Modify Date")]
-        public DateTime ModifyDate { get; set; }
+        public DateTime? ModifyDate { get; set; }
 
         public SystemUser CreateUser { get; set; }
         public SystemUser ModifyUser { get; set; }
@@ -29,6 +29,7 @@ namespace RomeoTracker.Models.Entities
         public virtual void OnBeforeInsert()
         {
             this.CreateDate = DateTime.Now;
+            this.ModifyDate = DateTime.Now;
         }
 
         public virtual void OnBeforeUpdate()

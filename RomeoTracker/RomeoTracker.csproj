@@ -176,6 +176,7 @@
     <Compile Include="Models\Security\IdentityModels.cs" />
     <Compile Include="Models\Security\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\PetImageService.cs" />
     <Compile Include="Services\PetService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -253,9 +254,12 @@
     <Content Include="Views\Shared\DisplayTemplates\Date.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PetImage.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PetImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

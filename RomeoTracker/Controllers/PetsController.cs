@@ -48,10 +48,22 @@ namespace RomeoTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,BirthDate,CreateDate,ModifyDate")] Pet pet)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,BirthDate,CreateDate,ModifyDate")] Pet pet, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
+
+                if (image != null)
+                {
+                    if (pet.PetPicture == null)
+                        pet.PetPicture = new PetImage();
+
+                    pet.PetPicture.ImageMimeType = image.ContentType;
+                    pet.PetPicture.ContentLength = image.ContentLength;
+                    pet.PetPicture.Picture = new byte[image.ContentLength];
+                    image.InputStream.Read(pet.PetPicture.Picture, 0, image.ContentLength);
+                }
+
                 db.Pets.Add(pet);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -80,10 +92,24 @@ namespace RomeoTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,BirthDate,CreateDate,ModifyDate")] Pet pet)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,BirthDate,CreateDate,ModifyDate,PetPicture")] Pet pet, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    if (pet.PetPicture == null)
+                        pet.PetPicture = new PetImage();
+
+                    pet.PetPicture.ImageMimeType = image.ContentType;
+                    pet.PetPicture.ContentLength = image.ContentLength;
+                    pet.PetPicture.Picture = new byte[image.ContentLength];
+                    image.InputStream.Read(pet.PetPicture.Picture, 0, image.ContentLength);
+
+                                        
+
+                }
+
                 db.Entry(pet).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

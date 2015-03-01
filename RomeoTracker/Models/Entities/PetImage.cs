@@ -22,9 +22,17 @@ namespace RomeoTracker.Models.Entities
         [DisplayName("Description")]
         public string Description { get; set; }
 
+        [DisplayName("Content Type")]
+        public string ImageMimeType { get; set; }
+
+        [DisplayName("Content Length")]
+        public int ContentLength { get; set; }
 
         public byte[] Picture { get; set; }
 
+        public PetImage()
+        {
 
+        }
     }
 }

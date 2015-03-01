@@ -22,9 +22,13 @@ namespace RomeoTracker.Models.Entities
         [DisplayName("Birth Date")]
         public DateTime? BirthDate { get; set; }
 
-        
+        [DisplayName("Pet Image")]
         public virtual PetImage PetPicture { get; set; }
 
+
+        public Pet()
+        {
+        }
 
 
 

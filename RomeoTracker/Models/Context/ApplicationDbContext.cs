@@ -28,6 +28,70 @@ namespace RomeoTracker.Models
 
         #region Events 
 
+        public override System.Threading.Tasks.Task<int> SaveChangesAsync()
+        {
+
+            var changedEntities = ChangeTracker.Entries();
+
+            foreach (var changedEntity in changedEntities)
+            {
+                if (changedEntity.Entity is IEntity)
+                {
+                    var entity = changedEntity.Entity as IEntity;
+
+                    switch (changedEntity.State)
+                    {
+                        case EntityState.Added:
+                            entity.OnBeforeInsert();
+                            break;
+
+                        case EntityState.Modified:
+                            entity.OnBeforeUpdate();
+                            break;
+
+                        case EntityState.Deleted:
+                            entity.OnBeforeDelete();
+                            break;
+
+                    }
+                }
+            }
+            
+            
+            return base.SaveChangesAsync();
+        }
+
+        public override int SaveChanges()
+        {
+            var changedEntities = ChangeTracker.Entries();
+
+            foreach (var changedEntity in changedEntities)
+            {
+                if (changedEntity.Entity is IEntity)
+                {
+                    var entity = changedEntity.Entity as IEntity;
+
+                    switch (changedEntity.State)
+                    {
+                        case EntityState.Added:
+                            entity.OnBeforeInsert();
+                            break;
+
+                        case EntityState.Modified:
+                            entity.OnBeforeUpdate();
+                            break;
+
+                        case EntityState.Deleted:
+                            entity.OnBeforeDelete();
+                            break;
+
+                    }
+                }
+            }
+
+
+            return base.SaveChanges();
+        }
 
         #endregion
 
