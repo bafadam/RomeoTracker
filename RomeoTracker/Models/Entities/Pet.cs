@@ -26,6 +26,9 @@ namespace RomeoTracker.Models.Entities
         public virtual PetImage PetPicture { get; set; }
 
 
+        public virtual ICollection<PetImage> PetPictures { get; set; }
+
+
         public Pet()
         {
         }

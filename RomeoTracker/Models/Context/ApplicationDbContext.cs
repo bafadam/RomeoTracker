@@ -101,6 +101,8 @@ namespace RomeoTracker.Models
         public DbSet<Pet> Pets { get; set; }
         public DbSet<PetImage> PetImages { get; set; }
 
+        public DbSet<Medicine> Medicines { get; set; }
+        public DbSet<PetMedicine> PetMedicines { get; set; }
 
         #endregion
     }
